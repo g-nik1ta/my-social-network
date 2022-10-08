@@ -5,8 +5,11 @@ import Section from './Section';
 const Main = () => {
     return (
         <main>
-            <Nav/>
-            <Section/>
+            <div className="container">
+                <Nav />
+                <Section />
+            </div>
+
         </main>
     )
 }

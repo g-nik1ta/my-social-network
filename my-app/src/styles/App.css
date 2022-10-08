@@ -8,8 +8,12 @@ header {
   background-color: #2a2f43;
   color: #fff;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+}
+header .container {
+  max-width: 1220px;
+  width: 100%;
+  display: flex;
 }
 header .logo {
   width: 300px;
@@ -25,10 +29,49 @@ header .logo span {
   font-family: Caveat-Regular;
   color: #48ff00;
 }
-header .menu-user {
+header .header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  width: 100%;
+  max-width: 920px;
+}
+header .header-info .toggle {
+  background-color: #4d5bf9;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .header-info .toggle.active {
+  background-color: #ff4d89;
+}
+header .header-info .toggle.active ion-icon[classname=close] {
+  display: block !important;
+}
+header .header-info .toggle.active ion-icon[classname=open] {
+  display: none !important;
+}
+header .header-info .toggle ion-icon {
+  position: absolute;
+  color: #fff;
+  font-size: 34px;
+  display: none;
+}
+header .header-info .toggle ion-icon[classname=open] {
+  display: block !important;
+}
+header .header-info .toggle ion-icon[classname=close] {
+  display: none !important;
+}
+header .header-info .menu-user {
   padding: 0 40px;
 }
-header .menu-user button {
+header .header-info .menu-user button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   cursor: pointer;
   font-size: 14px;
@@ -41,56 +84,94 @@ header .menu-user button {
   transition: all 0.15s ease-in-out;
   border-radius: 5px;
 }
-header .menu-user button:first-child {
+header .header-info .menu-user button:first-child {
   background: #48ff00;
   border: 1px solid #48ff00;
 }
-header .menu-user button:first-child::before {
+header .header-info .menu-user button:first-child::before {
   content: "\f234";
   font-size: 14px;
   margin-right: 8px;
 }
-header .menu-user button:first-child:hover {
+header .header-info .menu-user button:first-child:hover {
   background: transparent;
   color: #48ff00;
 }
-header .menu-user button:last-child {
+header .header-info .menu-user button:last-child {
   background: none;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
-header .menu-user button:last-child::before {
+header .header-info .menu-user button:last-child::before {
   content: "\f2f6";
   font-size: 14px;
   margin-right: 8px;
 }
-header .menu-user button:last-child:hover {
+header .header-info .menu-user button:last-child:hover {
   background: #48ff00;
   color: #000;
   border: 1px solid #48ff00;
 }
 
 nav {
-  width: 300px;
+  flex: 0 70px;
   border-bottom-right-radius: 10px;
-  box-sizing: initial;
   border-left: 5px solid #4d5bf9;
   background-color: #4d5bf9;
-  transition: width 0.5s;
+  transition: flex 0.5s;
+  overflow: hidden;
+}
+nav.active {
+  flex: 0 300px;
 }
 nav ul {
-  padding: 20px 0 5px;
-}
-nav ul .active {
-  background-color: #fff;
-}
-nav ul .active a {
-  color: #333;
+  padding: 20px 0 10px;
 }
 nav ul li {
+  position: relative;
   list-style: none;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+}
+nav ul li.active {
+  background-color: #fff;
+}
+nav ul li.active b:nth-child(1),
+nav ul li.active b:nth-child(2) {
+  display: block;
+}
+nav ul li.active a {
+  color: #333;
+}
+nav ul li b:nth-child(1),
+nav ul li b:nth-child(2) {
+  position: absolute;
+  height: 20px;
+  width: 100%;
+  background: #fff;
+  display: none;
+}
+nav ul li b:nth-child(1)::before,
+nav ul li b:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #4d5bf9;
+}
+nav ul li b:nth-child(1) {
+  top: -20px;
+}
+nav ul li b:nth-child(1)::before {
+  border-bottom-right-radius: 20px;
+}
+nav ul li b:nth-child(2) {
+  bottom: -20px;
+}
+nav ul li b:nth-child(2)::before {
+  border-top-right-radius: 20px;
 }
 nav ul li a {
   display: flex;
@@ -99,6 +180,7 @@ nav ul li a {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 nav ul li a .icon {
+  margin-left: 2px;
   min-width: 60px;
   height: 60px;
   text-align: center;
@@ -111,6 +193,18 @@ nav ul li a .title {
   padding-left: 10px;
   height: 60px;
   line-height: 60px;
+}
+
+main .container {
+  max-width: 1220px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+}
+
+section {
+  flex: 1 auto;
+  background-color: #fff;
 }
 
 .App .font-awesome-icon::before {
