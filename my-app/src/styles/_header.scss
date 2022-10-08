@@ -13,7 +13,7 @@ header {
     }
 
     .logo {
-        flex: 0 300px
+        flex: 0 300px;
         height: 100%;
         background-color: #353949;
         display: flex;
@@ -29,7 +29,7 @@ header {
     }
 
     .header-info {
-        flex: 0 auto;
+        flex: 1 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -87,7 +87,7 @@ header {
                 display: inline-block;
                 text-transform: uppercase;
                 transition: all .15s ease-in-out;
-                border-radius: 5px;
+                border-radius: 20px;
 
                 &:first-child {
                     background: $colorY;

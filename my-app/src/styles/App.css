@@ -16,7 +16,7 @@ header .container {
   display: flex;
 }
 header .logo {
-  width: 300px;
+  flex: 0 300px;
   height: 100%;
   background-color: #353949;
   display: flex;
@@ -30,12 +30,11 @@ header .logo span {
   color: #48ff00;
 }
 header .header-info {
+  flex: 1 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-  width: 100%;
-  max-width: 920px;
 }
 header .header-info .toggle {
   background-color: #4d5bf9;
@@ -82,7 +81,7 @@ header .header-info .menu-user button {
   display: inline-block;
   text-transform: uppercase;
   transition: all 0.15s ease-in-out;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 header .header-info .menu-user button:first-child {
   background: #48ff00;

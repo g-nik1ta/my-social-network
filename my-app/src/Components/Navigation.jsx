@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
     return (
@@ -7,34 +8,34 @@ const Nav = () => {
                 <li className="list active">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <NavLink className="home" to='/home'>
                         <span className="icon"><ion-icon name="home-outline"></ion-icon></span>
                         <span className="title">home</span>
-                    </a>
+                    </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <NavLink className="profile" to='/profile'>
                         <span className="icon"><ion-icon name="person-outline"></ion-icon></span>
                         <span className="title">profile</span>
-                    </a>
+                    </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <NavLink className="chat" to='/chat'>
                         <span className="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
                         <span className="title">messages</span>
-                    </a>
+                    </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
-                    <a href="#">
+                    <NavLink className="setting" to='/setting'>
                         <span className="icon"><ion-icon name="settings-outline"></ion-icon></span>
                         <span className="title">setting</span>
-                    </a>
+                    </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
@@ -54,7 +55,6 @@ const Nav = () => {
                 </li>
             </ul>
         </nav>
-
     )
 }
 
@@ -68,6 +68,15 @@ window.addEventListener("load", () => {
             element.className = 'list active';
         })
     });
+
+    const section = document.querySelector("section");
+    const sectionChild = section.childNodes;
+    const activeList = document.querySelector('nav').querySelector(`a.${sectionChild[0].className}`);
+    list.forEach(el => {
+        el.className = 'list';
+    });
+    activeList.parentNode.className = 'list active'
+    
 })
 
 
