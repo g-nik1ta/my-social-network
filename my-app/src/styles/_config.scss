@@ -8,7 +8,19 @@
     src: url(../fonts/Dancing_Script/static/DancingScript-Regular.ttf);
 }
 
-$colorY: #48ff00;
-$colorB: #4d5bf9;
+$HeaderColorB: #03a9f4;
+$logoColorB: #3dc3ff;
+$navColorB: #4d5bf9;
 $colorBacground: #ededed;
 $containerMaxWidth: 1440px;
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

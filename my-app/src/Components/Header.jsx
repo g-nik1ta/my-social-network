@@ -15,6 +15,9 @@ const Header = () => {
                         <span>Contact</span>
                     </div>
                     <div className="menu-user">
+                        <div className="box">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </div>
                         <button>register</button>
                         <button>login</button>
                     </div>
