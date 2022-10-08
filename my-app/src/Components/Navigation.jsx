@@ -54,11 +54,22 @@ const Nav = () => {
                     </a>
                 </li>
             </ul>
+            <div className="toggle active">
+                <ion-icon name="menu-outline" className="open"></ion-icon>
+                <ion-icon name="close-outline" className="close"></ion-icon>
+            </div>
         </nav>
     )
 }
 
 window.addEventListener("load", () => {
+    const menuToggle = document.querySelector('.toggle');
+    const navigation = document.querySelector('nav');
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+    });
+
     const list = document.querySelectorAll('.list');
     list.forEach(element => {
         element.addEventListener("click", () => {
@@ -76,7 +87,7 @@ window.addEventListener("load", () => {
         el.className = 'list';
     });
     activeList.parentNode.className = 'list active'
-    
+
 })
 
 

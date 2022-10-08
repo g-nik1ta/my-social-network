@@ -3,6 +3,10 @@
   src: url(../fonts/Caveat/static/Caveat-Regular.ttf);
 }
 header {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   width: 100%;
   height: 70px;
   background-color: #2a2f43;
@@ -23,7 +27,7 @@ header .logo {
   justify-content: center;
   align-items: center;
 }
-header .logo span {
+header .logo a {
   letter-spacing: 4px;
   font-size: 34px;
   font-family: Caveat-Regular;
@@ -35,37 +39,6 @@ header .header-info {
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
-}
-header .header-info .toggle {
-  background-color: #4d5bf9;
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-header .header-info .toggle.active {
-  background-color: #ff4d89;
-}
-header .header-info .toggle.active ion-icon[classname=close] {
-  display: block !important;
-}
-header .header-info .toggle.active ion-icon[classname=open] {
-  display: none !important;
-}
-header .header-info .toggle ion-icon {
-  position: absolute;
-  color: #fff;
-  font-size: 34px;
-  display: none;
-}
-header .header-info .toggle ion-icon[classname=open] {
-  display: block !important;
-}
-header .header-info .toggle ion-icon[classname=close] {
-  display: none !important;
 }
 header .header-info .menu-user {
   padding: 0 40px;
@@ -89,6 +62,8 @@ header .header-info .menu-user button:first-child {
 }
 header .header-info .menu-user button:first-child::before {
   content: "\f234";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 14px;
   margin-right: 8px;
 }
@@ -103,6 +78,8 @@ header .header-info .menu-user button:last-child {
 }
 header .header-info .menu-user button:last-child::before {
   content: "\f2f6";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   font-size: 14px;
   margin-right: 8px;
 }
@@ -113,8 +90,13 @@ header .header-info .menu-user button:last-child:hover {
 }
 
 nav {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   flex: 0 70px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  border-top-left-radius: 0;
   border-left: 5px solid #4d5bf9;
   background-color: #4d5bf9;
   transition: flex 0.5s;
@@ -124,7 +106,7 @@ nav.active {
   flex: 0 300px;
 }
 nav ul {
-  padding: 20px 0 10px;
+  padding: 30px 0 10px;
 }
 nav ul li {
   position: relative;
@@ -133,7 +115,7 @@ nav ul li {
   border-bottom-left-radius: 20px;
 }
 nav ul li.active {
-  background-color: #fff;
+  background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 80%, #ededed 100%);
 }
 nav ul li.active b:nth-child(1),
 nav ul li.active b:nth-child(2) {
@@ -147,7 +129,7 @@ nav ul li b:nth-child(2) {
   position: absolute;
   height: 20px;
   width: 100%;
-  background: #fff;
+  background: #ededed;
   display: none;
 }
 nav ul li b:nth-child(1)::before,
@@ -193,9 +175,46 @@ nav ul li a .title {
   height: 60px;
   line-height: 60px;
 }
+nav .toggle {
+  margin: 10px 0 10px 5px;
+  background-color: #4d5bf9;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+  border-radius: 50%;
+}
+nav .toggle.active {
+  background-color: #3f13ab;
+  border-radius: 10px;
+}
+nav .toggle.active ion-icon[classname=close] {
+  display: block !important;
+}
+nav .toggle.active ion-icon[classname=open] {
+  display: none !important;
+}
+nav .toggle ion-icon {
+  position: absolute;
+  color: #fff;
+  font-size: 34px;
+  display: none;
+}
+nav .toggle ion-icon[classname=open] {
+  display: block !important;
+}
+nav .toggle ion-icon[classname=close] {
+  display: none !important;
+}
 
+main {
+  margin-top: 50px;
+}
 main .container {
-  max-width: 1220px;
+  max-width: 1440px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -204,9 +223,14 @@ main .container {
 section {
   flex: 1 auto;
   background-color: #fff;
+  margin: 0 40px;
 }
 
-.App .font-awesome-icon::before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+aside {
+  background-color: #fff;
+  width: 200px;
+}
+
+.App {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }/*# sourceMappingURL=App.css.map */
