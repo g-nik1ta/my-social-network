@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-social-network/static/css/main.4aa4b42d.css",
+    "main.js": "/my-social-network/static/js/main.1f72c9e3.js",
+    "static/js/787.28cb0dcd.chunk.js": "/my-social-network/static/js/787.28cb0dcd.chunk.js",
+    "static/media/Caveat-Regular.ttf": "/my-social-network/static/media/Caveat-Regular.1f129497cd349562c266.ttf",
+    "index.html": "/my-social-network/index.html",
+    "main.4aa4b42d.css.map": "/my-social-network/static/css/main.4aa4b42d.css.map",
+    "main.1f72c9e3.js.map": "/my-social-network/static/js/main.1f72c9e3.js.map",
+    "787.28cb0dcd.chunk.js.map": "/my-social-network/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4aa4b42d.css",
+    "static/js/main.1f72c9e3.js"
+  ]
+}
