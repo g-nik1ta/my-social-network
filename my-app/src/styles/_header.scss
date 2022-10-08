@@ -8,7 +8,7 @@ header {
     justify-content: center;
 
     .container {
-        max-width: 1220px;
+        max-width: $containerMaxWidth;
         width: 100%;
         display: flex;
     }
@@ -24,8 +24,8 @@ header {
         a {
             letter-spacing: 4px;
             font-size: 34px;
-            font-family: Caveat-Regular;
-            color: $colorY;
+            font-family: Dancing_Script-Regular;
+            color: #3dc3ff;
         }
     }
 
@@ -35,6 +35,34 @@ header {
         justify-content: space-between;
         align-items: center;
         padding-left: 20px;
+
+        .header-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex: 1;
+            max-width: 350px;
+
+            span {
+                position: relative;
+                cursor: pointer;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -2px;
+                    height: 2px;
+                    width: 0;
+                    background-color: #fff;
+                    transition: all .3s ease-in-out;
+                }
+
+                &:hover::after {
+                    width: 100%;
+                }
+            }
+        }
 
         .menu-user {
             padding: 0 40px;
@@ -53,8 +81,8 @@ header {
                 border-radius: 20px;
 
                 &:first-child {
-                    background: $colorY;
-                    border: 1px solid $colorY;
+                    background: #03a9f4;
+                    border: 1px solid #03a9f4;
 
                     &::before {
                         content: "\f234";
@@ -66,7 +94,7 @@ header {
 
                     &:hover {
                         background: transparent;
-                        color: $colorY;
+                        color: #03a9f4;
                     }
                 }
 
@@ -84,9 +112,9 @@ header {
                     }
 
                     &:hover {
-                        background: $colorY;
+                        background: #03a9f4;
                         color: #000;
-                        border: 1px solid $colorY;
+                        border: 1px solid #03a9f4;
                     }
                 }
             }

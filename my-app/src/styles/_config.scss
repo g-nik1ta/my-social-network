@@ -3,6 +3,12 @@
     src: url(../fonts/Caveat/static/Caveat-Regular.ttf);
 }
 
+@font-face {
+    font-family: Dancing_Script-Regular;
+    src: url(../fonts/Dancing_Script/static/DancingScript-Regular.ttf);
+}
+
 $colorY: #48ff00;
 $colorB: #4d5bf9;
 $colorBacground: #ededed;
+$containerMaxWidth: 1440px;
