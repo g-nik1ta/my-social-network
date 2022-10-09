@@ -5,14 +5,14 @@ import Profile from "./Section/Profile";
 import Chat from "./Section/Chat";
 import Setting from "./Section/Setting";
 
-const Section = () => {
+const Section = (props) => {
     return (
         <section>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/profile' element={<Profile />} />
-                <Route path='/chat' element={<Chat />} />
+                <Route exact path='/chat/*' element={<Chat chat={props.state.chat} />} />
                 <Route path='/setting' element={<Setting />} />
             </Routes>
         </section>

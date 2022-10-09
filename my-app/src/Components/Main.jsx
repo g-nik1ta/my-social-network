@@ -3,12 +3,12 @@ import Nav from './Navigation';
 import Section from './Section';
 import Aside from './Aside';
 
-const Main = () => {
+const Main = (props) => {
     return (
         <main>
             <div className="container">
                 <Nav />
-                <Section />
+                <Section state={props.appState} />
                 <Aside />
             </div>
 

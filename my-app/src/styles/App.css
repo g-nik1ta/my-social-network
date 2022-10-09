@@ -308,6 +308,19 @@ section {
   background-color: #fff;
   margin: 0 40px;
 }
+section .chat {
+  display: flex;
+  margin: 10px 20px;
+}
+section .chat .chatUsers {
+  color: blueviolet;
+}
+section .chat .chatMessages {
+  margin-left: 20px;
+}
+section .chat .chatMessages p {
+  margin-bottom: 8px;
+}
 
 aside {
   background-color: #fff;

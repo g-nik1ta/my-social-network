@@ -2,4 +2,21 @@ section {
     flex: 1 auto;
     background-color: #fff;
     margin: 0 40px;
+
+    .chat {
+        display: flex;
+        margin: 10px 20px;
+
+        .chatUsers {
+            color: blueviolet;
+        }
+
+        .chatMessages {
+            margin-left: 20px;
+
+            p {
+                margin-bottom: 8px;
+            }
+        }
+    }
 }

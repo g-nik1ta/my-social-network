@@ -86,7 +86,7 @@ window.addEventListener("load", () => {
     list.forEach(el => {
         el.className = 'list';
     });
-    activeList.parentNode.className = 'list active'
+    activeList.parentNode.className = 'list active';
 
 })
 
