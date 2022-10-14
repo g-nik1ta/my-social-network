@@ -9,7 +9,7 @@ const Main = (props) => {
             <div className="container">
                 <Nav />
                 <Section state={props.appState} />
-                <Aside />
+                {/* <Aside /> */}
             </div>
 
         </main>

@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 
-const ChatItem = (props) => {
-    let path = '/chat/' + props.id;
+const ChatFriend = (props) => {
+    let path = "dialogs/" + props.id;
     return (
         <div>
             <NavLink to={path}>{props.name}</NavLink>
@@ -10,24 +10,33 @@ const ChatItem = (props) => {
     )
 }
 
-const ChatItemMessage = (props) => {
+const ChatItem = (props) => {
+    let path = 'dialogs/' + props.id;
+    let userChatingHistory = props.chatingHistory.map(userChatingHistoryItem => <ChatItemMessages text={userChatingHistoryItem.text} />);
+
     return (
-        <div>
-            <p>{props.text}</p>
-        </div>
+        <Routes>
+            <Route path={path} element={userChatingHistory} />
+        </Routes>
+    )
+}
+
+const ChatItemMessages = (props) => {
+    return (
+        <p>{props.text}</p>
     )
 }
 
 const Chat = (props) => {
-    let chatElements = props.chat.map(chatItem => <ChatItem name={chatItem.name} id={chatItem.id} />);
-    let chatElementsMessages = props.chat[0].messages.map(chatItemMessage => <ChatItemMessage text={chatItemMessage.text} />)
+    let chatFriendElements = props.chat.map(chatFriend => <ChatFriend name={chatFriend.name} id={chatFriend.id} />);
+    let chatFriendItem = props.chat.map(chatItem => <ChatItem id={chatItem.id} chatingHistory={chatItem.messages} />);
     return (
         <div className="chat">
             <div className="chatUsers">
-                {chatElements}
+                {chatFriendElements}
             </div>
             <div className="chatMessages">
-                {chatElementsMessages}
+                {chatFriendItem}
             </div>
         </div>
     )
