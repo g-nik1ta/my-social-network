@@ -9,6 +9,8 @@ section {
 
         .chatUsers {
             color: blueviolet;
+            display: flex;
+            flex-direction: column;
         }
 
         .chatMessages {

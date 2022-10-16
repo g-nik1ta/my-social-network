@@ -314,6 +314,8 @@ section .chat {
 }
 section .chat .chatUsers {
   color: blueviolet;
+  display: flex;
+  flex-direction: column;
 }
 section .chat .chatMessages {
   margin-left: 20px;

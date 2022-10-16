@@ -8,7 +8,7 @@ const Main = (props) => {
         <main>
             <div className="container">
                 <Nav />
-                <Section state={props.appState} />
+                <Section store={props.store} dispatch={props.dispatch} />
                 {/* <Aside /> */}
             </div>
 
