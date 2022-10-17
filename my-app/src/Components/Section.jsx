@@ -13,7 +13,7 @@ const Section = (props) => {
                 <Route path="/" element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/profile' element={<Profile />} />
-                <Route exact path='/chat/*' element={<Chat store={props.store} dispatch={props.dispatch} /*chat={props.state.chat}*/ />} />
+                <Route exact path='/chat/*' element={<Chat chat={props.chat} dispatch={props.dispatch} />} />
                 <Route path='/setting' element={<Setting />} />
             </Routes>
         </section>

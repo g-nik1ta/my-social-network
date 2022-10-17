@@ -6,7 +6,7 @@ function App(props) {
 	return (
 		<div className="App">
 			<Header />
-			<Main store={props.store} dispatch={props.dispatch} />
+			<Main chat={props.state.chat} dispatch={props.dispatch} />
 		</div>
 	);
 }

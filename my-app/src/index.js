@@ -1,9 +1,9 @@
-import store from './Redux/state';
+import store from './Redux/redux-store';
+import ReactDOM from "react-dom/client";
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import App from './App';
 import './styles/index.css';
 import { BrowserRouter } from "react-router-dom";
-import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -17,4 +17,8 @@ let rerenderDOM = (state) => {
 }
 
 rerenderDOM(store.getState());
-store.subscribe(rerenderDOM);
+
+store.subscribe(() => {
+	let state = store.getState();
+	rerenderDOM(state);	
+});

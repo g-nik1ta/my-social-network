@@ -8,7 +8,7 @@ const Main = (props) => {
         <main>
             <div className="container">
                 <Nav />
-                <Section store={props.store} dispatch={props.dispatch} />
+                <Section chat={props.chat} dispatch={props.dispatch} />
                 {/* <Aside /> */}
             </div>
 

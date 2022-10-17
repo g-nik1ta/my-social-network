@@ -23,20 +23,19 @@ const FriendChat = (props) => {
 const FriendMessage = (props) => { return (<p>{props.text}</p>) }
 
 const Chat = (props) => {
-    let state = props.store.getState().chat;
-    let friends = state.dialogs.map(friend => <Friend name={friend.name} id={friend.id} />);
-    let friendsChat = state.dialogs.map(friendChat => <FriendChat id={friendChat.id} friendMessages={friendChat.messages} />);
+    let friends = props.chat.dialogs.map(friend => <Friend name={friend.name} id={friend.id} />);
+    let friendsChat = props.chat.dialogs.map(friendChat => <FriendChat id={friendChat.id} friendMessages={friendChat.messages} />);
     const textarea = document.querySelector("textarea");
     const chatUsers = document.querySelector(".chatUsers");
 
     let onSendMessageClick = () => {
         let currentDialogId = chatUsers.querySelector(".active").dataset.dialogId;
-        props.store.dispatch(sendMessageCreator(currentDialogId));
+        props.dispatch(sendMessageCreator(currentDialogId));
         textarea.value = '';
     }
     let onNewMessageChange = (e) => {
         let body = e.target.value;
-        props.store.dispatch(updateNewMessageBodyCreator(body));
+        props.dispatch(updateNewMessageBodyCreator(body));
     }
 
 
