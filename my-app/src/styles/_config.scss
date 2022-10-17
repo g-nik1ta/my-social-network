@@ -1,19 +1,16 @@
 @font-face {
-    font-family: Caveat-Regular;
-    src: url(../fonts/Caveat/static/Caveat-Regular.ttf);
-}
-
-@font-face {
     font-family: Dancing_Script-Regular;
     src: url(../fonts/Dancing_Script/static/DancingScript-Regular.ttf);
 }
+
+$containerMaxWidth: 1440px;
 
 $HeaderColorB: #03a9f4;
 $logoColorB: #3dc3ff;
 $navColorB: #4d5bf9;
 $colorBacground: #ededed;
-$containerMaxWidth: 1440px;
 
+$colorChatText: #95aac9;
 
 @keyframes animate {
     0% {

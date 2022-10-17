@@ -6,9 +6,7 @@
 @import 'aside';
 
 .App {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-    ion-icon {
+    ion-icon, img {
         pointer-events: none;
     }
 }
