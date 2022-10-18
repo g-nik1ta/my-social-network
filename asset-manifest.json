@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.css": "/my-social-network/static/css/main.674103ff.css",
-    "main.js": "/my-social-network/static/js/main.8c27bc48.js",
-    "static/js/787.28cb0dcd.chunk.js": "/my-social-network/static/js/787.28cb0dcd.chunk.js",
-    "static/media/Caveat-Regular.ttf": "/my-social-network/static/media/Caveat-Regular.1f129497cd349562c266.ttf",
+    "main.css": "/my-social-network/static/css/main.0c02e530.css",
+    "main.js": "/my-social-network/static/js/main.b7c17d9f.js",
+    "static/media/002-user-avatar.jpg": "/my-social-network/static/media/002-user-avatar.66f1c384c79cdd3f637d.jpg",
+    "static/media/001-user-avatar.jpg": "/my-social-network/static/media/001-user-avatar.deb020bfeb8a9e45e797.jpg",
+    "static/media/003-user-avatar.jpg": "/my-social-network/static/media/003-user-avatar.49be279fe5b0db4a0cc2.jpg",
     "static/media/DancingScript-Regular.ttf": "/my-social-network/static/media/DancingScript-Regular.5bfc0dcc0c0ff5a2832e.ttf",
+    "static/media/005-user-avatar.jpg": "/my-social-network/static/media/005-user-avatar.6fa6fda23beefbb822a8.jpg",
+    "static/media/004-user-avatar.jpg": "/my-social-network/static/media/004-user-avatar.6ca74907d59a0ceba46b.jpg",
+    "static/media/standart-avatar.png": "/my-social-network/static/media/standart-avatar.ded151508dab184f89f8.png",
+    "static/media/002-message-block.svg": "/my-social-network/static/media/002-message-block.8a918792319e5ebb9983.svg",
+    "static/media/003-send-message.svg": "/my-social-network/static/media/003-send-message.a51008c75295c8491506405137976147.svg",
     "index.html": "/my-social-network/index.html",
-    "main.674103ff.css.map": "/my-social-network/static/css/main.674103ff.css.map",
-    "main.8c27bc48.js.map": "/my-social-network/static/js/main.8c27bc48.js.map",
-    "787.28cb0dcd.chunk.js.map": "/my-social-network/static/js/787.28cb0dcd.chunk.js.map"
+    "static/media/001-search.svg": "/my-social-network/static/media/001-search.4f017c1934ef3cd63753.svg",
+    "main.0c02e530.css.map": "/my-social-network/static/css/main.0c02e530.css.map",
+    "main.b7c17d9f.js.map": "/my-social-network/static/js/main.b7c17d9f.js.map"
   },
   "entrypoints": [
-    "static/css/main.674103ff.css",
-    "static/js/main.8c27bc48.js"
+    "static/css/main.0c02e530.css",
+    "static/js/main.b7c17d9f.js"
   ]
 }
