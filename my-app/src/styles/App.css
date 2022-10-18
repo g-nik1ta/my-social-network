@@ -306,6 +306,7 @@ section {
 }
 section .chat {
   display: flex;
+  max-height: 520px;
 }
 section .chat h2 {
   font-size: 22px;
@@ -315,6 +316,7 @@ section .chat .chatUsers {
   display: flex;
   flex-direction: column;
   flex: 0 0 270px;
+  max-width: 270px;
 }
 section .chat .chatUsers .user-messages-search {
   margin-bottom: 8px;
@@ -366,6 +368,9 @@ section .chat .chatUsers a {
   border-radius: 6px;
   transition: all 0.1s;
 }
+section .chat .chatUsers a:last-of-type {
+  margin-bottom: 0;
+}
 section .chat .chatUsers a:nth-of-type(3n+1) .userAvatar i {
   display: block;
 }
@@ -397,11 +402,17 @@ section .chat .chatUsers a .userAvatar i {
 section .chat .chatUsers a .text-block {
   display: flex;
   flex-direction: column;
+  align-self: baseline;
 }
 section .chat .chatUsers a .text-block h4 {
   color: #000;
   font-weight: 500;
   font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 section .chat .chatUsers a .text-block p {
   color: #95aac9;
@@ -410,10 +421,12 @@ section .chat .chatUsers a .text-block p {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  overflow-wrap: anywhere;
 }
 section .chat .chatUsers a .add-info {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
   height: 100%;
 }
 section .chat .chatUsers a .add-info .dispatch-time {
@@ -425,9 +438,113 @@ section .chat .chatMessages {
   margin-left: 20px;
   flex: 1 auto;
   background-color: #fff;
+  position: relative;
+  height: inherit;
+  padding: 10px 10px 70px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: scroll;
+  overflow-x: hidden;
 }
-section .chat .chatMessages p {
+section .chat .chatMessages::-webkit-scrollbar {
+  width: 10px;
+}
+section .chat .chatMessages::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+section .chat .chatMessages::-webkit-scrollbar-thumb {
+  background-color: rgba(169, 169, 169, 0.35);
+  border-radius: 4px;
+}
+section .chat .chatMessages .message-text {
   margin-bottom: 8px;
+  padding: 8px;
+  background-color: #e0eef7;
+  border-radius: 8px;
+  max-width: 50%;
+  overflow-wrap: anywhere;
+}
+section .chat .chatMessages .my-message-text {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #009dff;
+  border-radius: 8px;
+  max-width: 50%;
+  align-self: flex-end;
+  overflow-wrap: anywhere;
+}
+section .chat .chatMessages .inpute-my-message {
+  width: 96%;
+  background-color: rgb(235, 241, 247);
+  position: absolute;
+  bottom: 12px;
+  display: flex;
+  padding: 10px 20px;
+  border-radius: 28px;
+}
+section .chat .chatMessages .inpute-my-message textarea {
+  width: 100%;
+  background: none;
+  resize: none;
+  outline: none;
+  border: none;
+  position: relative;
+  max-height: 34px;
+  padding: 9.5px 0;
+  overflow-wrap: break-word;
+  color: #95aac9;
+  font-size: 15px;
+}
+section .chat .chatMessages .inpute-my-message textarea::-moz-placeholder {
+  color: #95aac9;
+}
+section .chat .chatMessages .inpute-my-message textarea:-ms-input-placeholder {
+  color: #95aac9;
+}
+section .chat .chatMessages .inpute-my-message textarea::placeholder {
+  color: #95aac9;
+}
+section .chat .chatMessages .inpute-my-message textarea::-webkit-scrollbar {
+  width: 0;
+}
+section .chat .chatMessages .inpute-my-message button {
+  min-width: 34px;
+  height: 34px;
+  outline: none;
+  border: none;
+  background-color: #0f79f4;
+  border-radius: 50%;
+  padding: 3px 2px 0 0;
+  transition: all 0.1s ease-in-out;
+}
+section .chat .chatMessages .inpute-my-message button:hover {
+  background-color: #0c6ede;
+  cursor: pointer;
+  transform: scale(1.035);
+}
+section .chat .chatMessages .default-chat-section {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+section .chat .chatMessages .default-chat-section .message-item {
+  width: 36px;
+  height: 36px;
+  background-image: url("../assets/png/002-message-block.svg");
+  background-size: 65%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  background-color: rgb(249, 249, 249);
+}
+section .chat .chatMessages .default-chat-section p {
+  font-size: 14px;
+  color: #95aac9;
+  text-align: center;
 }
 
 aside {
