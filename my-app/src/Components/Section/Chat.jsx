@@ -1,12 +1,25 @@
 import React from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
-import { sendMessageCreator, updateNewMessageBodyCreator } from "../../Redux/chatReducer";
 import standartAvatar from '../../assets/standart-avatar.png';
 import sendImg from '../../assets/png/003-send-message.svg';
 
 const Chat = (props) => {
+    let onSendMessageClick = () => {
+        const chatUsers = document.querySelector(".chatUsers");
+        const textarea = document.querySelector("textarea");
+        let currentDialogId = chatUsers.querySelector(".active").dataset.dialogId;
+        if (textarea.value !== '' && textarea.value.trim() !== '') {
+            props.sendMessage(currentDialogId);
+            textarea.value = '';
+        } else textarea.value = '';
+    }
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    }
+    
     let friends = props.chat.dialogs.map(friend => <Friend name={friend.name} id={friend.id} userAvatar={friend.avatar} lastSms={friend.messages.slice(-1)[0]} />);
-    let friendsChat = props.chat.dialogs.map(friendChat => <FriendChat dispatch={props.dispatch} id={friendChat.id} friendMessages={friendChat.messages} />);
+    let friendsChat = props.chat.dialogs.map(friendChat => <FriendChat onSendMessageClick={onSendMessageClick} onNewMessageChange={onNewMessageChange} id={friendChat.id} friendMessages={friendChat.messages} />);
 
     return (
         <div className="chat">
@@ -68,7 +81,7 @@ const FriendChat = (props) => {
     let path = 'dialogs/' + props.id;
     let lastID = props.friendMessages.slice(-1)[0].id;
     let friendMessages = props.friendMessages.slice(0).reverse().map(friendMessage => <FriendMessage lastID={lastID} id={friendMessage.id} text={friendMessage.text} myMessage={friendMessage.myMessage} />);
-    friendMessages.push(<InputMyMessageBlock dispatch={props.dispatch} />);
+    friendMessages.push(<InputMyMessageBlock onSendMessageClick={props.onSendMessageClick} onNewMessageChange={props.onNewMessageChange} />);
 
     return (
         <Routes>
@@ -85,28 +98,13 @@ const FriendMessage = (props) => {
 }
 
 const InputMyMessageBlock = (props) => {
-    const textarea = document.querySelector("textarea");
-    const chatUsers = document.querySelector(".chatUsers");
-
-    let onSendMessageClick = () => {
-        let currentDialogId = chatUsers.querySelector(".active").dataset.dialogId;
-        if (textarea.value !== '' && textarea.value.trim() !== '') {
-            props.dispatch(sendMessageCreator(currentDialogId));
-            textarea.value = '';
-        } else textarea.value = '';
-    }
-    let onNewMessageChange = (e) => {
-        let body = e.target.value;
-        props.dispatch(updateNewMessageBodyCreator(body));
-    }
-
     return (
         <div className="inpute-my-message">
             <textarea
-                onChange={onNewMessageChange}
+                onChange={props.onNewMessageChange}
                 placeholder='Send message'>
             </textarea>
-            <button onClick={onSendMessageClick}>
+            <button onClick={props.onSendMessageClick}>
                 <img src={sendImg} alt="send-img" />
             </button>
         </div>

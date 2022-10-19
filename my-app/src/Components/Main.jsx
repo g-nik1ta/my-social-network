@@ -3,12 +3,12 @@ import Nav from './Navigation';
 import Section from './Section';
 import Aside from './Aside';
 
-const Main = (props) => {
+const Main = () => {
     return (
         <main>
             <div className="container">
                 <Nav />
-                <Section chat={props.chat} dispatch={props.dispatch} />
+                <Section />
                 {/* <Aside /> */}
             </div>
 

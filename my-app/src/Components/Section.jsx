@@ -4,8 +4,9 @@ import Home from "./Section/Home";
 import Profile from "./Section/Profile";
 import Chat from "./Section/Chat";
 import Setting from "./Section/Setting";
+import ChatContainer from "./Section/ChatContainer";
 
-const Section = (props) => {
+const Section = () => {
     return (
         <section>
             <Routes>
@@ -13,7 +14,7 @@ const Section = (props) => {
                 <Route path="/" element={<Home />} />
                 <Route path='/home' element={<Home />} />
                 <Route path='/profile' element={<Profile />} />
-                <Route exact path='/chat/*' element={<Chat chat={props.chat} dispatch={props.dispatch} />} />
+                <Route exact path='/chat/*' element={<ChatContainer />} />
                 <Route path='/setting' element={<Setting />} />
             </Routes>
         </section>
