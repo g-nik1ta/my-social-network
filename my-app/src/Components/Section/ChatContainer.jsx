@@ -5,17 +5,18 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        chat: state.chat
+        chat: state.chat,
+        newMessageBody: state.chat.newMessageBody
     }
 }
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        updateNewMessageBody: (body) => {
-            dispatch(updateNewMessageBodyCreator(body));
-        },
         sendMessage: (currentDialogId) => {
             dispatch(sendMessageCreator(currentDialogId));
+        },
+        updateNewMessageBody: (body) => {
+            dispatch(updateNewMessageBodyCreator(body));
         }
     }
 }

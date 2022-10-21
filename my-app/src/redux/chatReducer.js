@@ -55,18 +55,32 @@ let initialState = {
 }
 
 const chatReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.body;
-            return state;
+            return {
+                ...state,
+                newMessageBody: action.body
+            }
         case SEND_MESSAGE:
             let body = state.newMessageBody;
-            state.newMessageBody = "";
-            let neededID = state.dialogs[action.currentDialogId].messages.slice(-1)[0].id + 1;
-            let dispatchTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            state.dialogs[action.currentDialogId].messages.push({ id: neededID, text: body, dispatchTime: dispatchTime, myMessage: true });
-            return state;
+            let neededID = state.dialogs[action.currentDialogId].messages.length;
+            let dispatchTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            let newMessageState = {
+                ...state.dialogs[action.currentDialogId],
+                messages: [...state.dialogs[action.currentDialogId].messages, { id: neededID, text: body, dispatchTime: dispatchTime, myMessage: true }],
+                newMessageBody: ''
+            };
+                return {
+                ...state,
+                dialogs: state.dialogs.map(
+                    dialog => dialog.id === Number(action.currentDialogId)
+                        ? {
+                            ...dialog,
+                            messages: newMessageState.messages
+                        }
+                        : dialog
+                ),
+            }
         default:
             return state;
     }

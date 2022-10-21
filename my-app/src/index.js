@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderDOM = (state) => {
+// let rerenderDOM = (state) => {
 
 	root.render(
 		<BrowserRouter>
@@ -18,11 +18,11 @@ let rerenderDOM = (state) => {
 		</BrowserRouter>
 	);
 
-}
+// }
 
-rerenderDOM(store.getState());
+// rerenderDOM(store.getState());
 
-store.subscribe(() => {
-	let state = store.getState();
-	rerenderDOM(state);
-});
+// store.subscribe(() => {
+// 	let state = store.getState();
+// 	rerenderDOM(state);
+// });
