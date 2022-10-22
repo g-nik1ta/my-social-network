@@ -6,11 +6,11 @@ import Aside from './Aside';
 const Main = () => {
     return (
         <main>
-            <div className="container">
+            {/* <div className="container"> */}
                 <Nav />
                 <Section />
                 {/* <Aside /> */}
-            </div>
+            {/* </div> */}
 
         </main>
     )

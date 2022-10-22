@@ -24,15 +24,9 @@ header {
       -ms-user-select: none;
           user-select: none;
   width: 100%;
-  height: 70px;
+  height: 10vh;
   background-color: #2a2f43;
   color: #fff;
-  display: flex;
-  justify-content: center;
-}
-header .container {
-  max-width: 1440px;
-  width: 100%;
   display: flex;
 }
 header .logo {
@@ -170,13 +164,14 @@ nav {
       -ms-user-select: none;
           user-select: none;
   flex: 0 0 70px;
-  border-radius: 10px;
-  border-top-left-radius: 0;
+  border-radius: 0 10px 10px 0;
   border-left: 5px solid #4d5bf9;
   background-color: #4d5bf9;
   transition: flex 0.5s ease-in-out;
   overflow: hidden;
-  align-self: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 nav.active {
   flex: 0 0 300px;
@@ -269,7 +264,7 @@ nav .toggle {
 }
 nav .toggle.active {
   background-color: #3f13ab;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 nav .toggle.active ion-icon[classname=close] {
   display: block !important;
@@ -291,13 +286,9 @@ nav .toggle ion-icon[classname=close] {
 }
 
 main {
-  margin-top: 50px;
-}
-main .container {
-  max-width: 1440px;
-  margin: 0 auto;
   width: 100%;
   display: flex;
+  height: 90vh;
 }
 
 section {
@@ -306,11 +297,19 @@ section {
 }
 section .chat {
   display: flex;
-  max-height: 520px;
+  height: 100%;
 }
-section .chat h2 {
-  font-size: 22px;
-  margin-bottom: 18px;
+section .chat .temporary-user-messange-input {
+  position: absolute;
+  width: 200px;
+  height: 34px;
+  outline: none;
+  background-color: rgba(255, 0, 0, 0.08);
+  border: 2px dashed rgba(255, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
 }
 section .chat .chatUsers {
   display: flex;
@@ -319,7 +318,7 @@ section .chat .chatUsers {
   max-width: 270px;
 }
 section .chat .chatUsers .user-messages-search {
-  margin-bottom: 8px;
+  margin: 8px 0;
   position: relative;
 }
 section .chat .chatUsers .user-messages-search button {
@@ -358,7 +357,23 @@ section .chat .chatUsers .user-messages-search input:-ms-input-placeholder {
 section .chat .chatUsers .user-messages-search input::placeholder {
   color: #95aac9;
 }
-section .chat .chatUsers a {
+section .chat .chatUsers .friends-block {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+section .chat .chatUsers .friends-block::-webkit-scrollbar {
+  width: 6px;
+}
+section .chat .chatUsers .friends-block::-webkit-scrollbar-track {
+  background-color: rgba(85, 85, 85, 0.2);
+  border-radius: 4px;
+  margin: 4px 0;
+}
+section .chat .chatUsers .friends-block::-webkit-scrollbar-thumb {
+  background-color: rgba(169, 169, 169, 0.4);
+  border-radius: 4px;
+}
+section .chat .chatUsers .friends-block a {
   background-color: #fff;
   margin: 6px 0;
   padding: 6px 14px;
@@ -368,27 +383,27 @@ section .chat .chatUsers a {
   border-radius: 6px;
   transition: all 0.1s;
 }
-section .chat .chatUsers a:last-of-type {
+section .chat .chatUsers .friends-block a:last-of-type {
   margin-bottom: 0;
 }
-section .chat .chatUsers a:nth-of-type(3n+1) .userAvatar i {
+section .chat .chatUsers .friends-block a:nth-of-type(4n+1) .userAvatar i, section .chat .chatUsers .friends-block a:nth-of-type(5n+1) .userAvatar i {
   display: block;
 }
-section .chat .chatUsers a:hover {
+section .chat .chatUsers .friends-block a:hover {
   background-color: rgb(230, 230, 230);
 }
-section .chat .chatUsers a .userAvatar {
+section .chat .chatUsers .friends-block a .userAvatar {
   position: relative;
   margin-right: 10px;
 }
-section .chat .chatUsers a .userAvatar img {
+section .chat .chatUsers .friends-block a .userAvatar img {
   width: 50px;
   height: 50px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
 }
-section .chat .chatUsers a .userAvatar i {
+section .chat .chatUsers .friends-block a .userAvatar i {
   display: none;
   background-color: #ffc107;
   position: absolute;
@@ -399,12 +414,12 @@ section .chat .chatUsers a .userAvatar i {
   top: 0%;
   right: 0%;
 }
-section .chat .chatUsers a .text-block {
+section .chat .chatUsers .friends-block a .text-block {
   display: flex;
   flex-direction: column;
   align-self: baseline;
 }
-section .chat .chatUsers a .text-block h4 {
+section .chat .chatUsers .friends-block a .text-block h4 {
   color: #000;
   font-weight: 500;
   font-size: 16px;
@@ -414,7 +429,7 @@ section .chat .chatUsers a .text-block h4 {
   overflow: hidden;
   overflow-wrap: anywhere;
 }
-section .chat .chatUsers a .text-block p {
+section .chat .chatUsers .friends-block a .text-block p {
   color: #95aac9;
   font-size: 15px;
   display: -webkit-box;
@@ -423,13 +438,14 @@ section .chat .chatUsers a .text-block p {
   overflow: hidden;
   overflow-wrap: anywhere;
 }
-section .chat .chatUsers a .add-info {
+section .chat .chatUsers .friends-block a .add-info {
   display: flex;
   flex-direction: column;
   margin-left: auto;
   height: 100%;
+  align-self: flex-start;
 }
-section .chat .chatUsers a .add-info .dispatch-time {
+section .chat .chatUsers .friends-block a .add-info .dispatch-time {
   font-size: 11px;
   margin-top: 4px;
   color: #bfccdf;
@@ -447,32 +463,36 @@ section .chat .chatMessages {
   overflow-x: hidden;
 }
 section .chat .chatMessages::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 section .chat .chatMessages::-webkit-scrollbar-track {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  margin: 8px 0;
 }
 section .chat .chatMessages::-webkit-scrollbar-thumb {
   background-color: rgba(169, 169, 169, 0.35);
   border-radius: 4px;
 }
-section .chat .chatMessages .message-text {
+section .chat .chatMessages .messanges-block {
+  display: flex;
+  flex-direction: column;
+}
+section .chat .chatMessages .messanges-block > * {
   margin-bottom: 8px;
   padding: 8px;
   background-color: #e0eef7;
-  border-radius: 8px;
-  max-width: 50%;
+  border-radius: 6px 6px 6px 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 70%;
   overflow-wrap: anywhere;
 }
-section .chat .chatMessages .my-message-text {
-  margin-bottom: 8px;
-  padding: 8px;
+section .chat .chatMessages .messanges-block .my-message {
   background-color: #009dff;
-  border-radius: 8px;
-  max-width: 50%;
   align-self: flex-end;
-  overflow-wrap: anywhere;
+  border-radius: 6px 6px 0 6px;
 }
 section .chat .chatMessages .inpute-my-message {
   width: 96%;

@@ -1,13 +1,15 @@
 nav {
     user-select: none;
     flex: 0 0 70px;
-    border-radius: 10px;
-    border-top-left-radius: 0;
+    border-radius: 0 10px 10px 0;
     border-left: 5px solid $navColorB;
     background-color: $navColorB;
     transition: flex .5s ease-in-out;
     overflow: hidden;
-    align-self: baseline;
+    // align-self: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &.active {
         flex: 0 0 300px;
@@ -116,7 +118,7 @@ nav {
 
         &.active {
             background-color: #3f13ab;
-            border-radius: 10px;
+            border-radius: 4px;
 
             ion-icon[classname="close"] {
                 display: block !important;

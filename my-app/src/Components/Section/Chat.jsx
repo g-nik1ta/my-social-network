@@ -8,8 +8,14 @@ const Chat = (props) => {
         const chatUsers = document.querySelector(".chatUsers");
         const textarea = document.querySelector("textarea");
         let currentDialogId = chatUsers.querySelector(".active").dataset.dialogId;
+        
+        if (textarea.value == '') {
+            props.sendMessage(currentDialogId);
+            document.querySelector(".temporary-user-messange-input").value = '';
+        }
+
         if (textarea.value !== '' && textarea.value.trim() !== '') {
-            props.sendMessage(currentDialogId); 
+            props.sendMessage(currentDialogId);
             textarea.value = '';
         } else textarea.value = '';
     }
@@ -17,26 +23,31 @@ const Chat = (props) => {
         let body = e.target.value;
         props.updateNewMessageBody(body);
     }
-    let friends = props.chat.dialogs.map(friend => <Friend name={friend.name} id={friend.id} userAvatar={friend.avatar} key={friend.id} lastSms={friend.messages.slice(-1)[0]} />
-                                                    /*console.log(friend.messages[3])}*/)
-    let friendsChat = props.chat.dialogs.map(friendChat => <FriendChat key={friendChat.id} onSendMessageClick={onSendMessageClick} onNewMessageChange={onNewMessageChange} id={friendChat.id} friendMessages={friendChat.messages} />);
+    let TemporaryonNewMessageChange = (e) => {
+        let temporaryBody = e.target.value;
+        props.updateNewMessageTemprorayBody(temporaryBody);
+    }
+    let friends = props.chat.dialogs.map(friend => <Friend lastSms={friend.messages[friend.messages.length - 1]} name={friend.name} userAvatar={friend.avatar} id={friend.id} key={friend.id} />);
+    let friendsChat = props.chat.dialogs.map(friendChat => <FriendChat TemporaryonNewMessageChange={TemporaryonNewMessageChange} friendMessages={friendChat.messages} id={friendChat.id} onSendMessageClick={onSendMessageClick} onNewMessageChange={onNewMessageChange} key={friendChat.id} />);
 
     return (
         <div className="chat">
             <div className="chatUsers">
-                <h2>Chats</h2>
                 <div className="user-messages-search">
                     <button></button>
-                    <input type="text" placeholder="Search messages of users" />
+                    <input type="search" placeholder="Search messages of users" />
                 </div>
-                {friends}
+                <div className="friends-block">
+                    {friends}
+                </div>
             </div>
-            <div className="chatMessages">
-                {friendsChat}
-                <Routes>
-                    <Route path="" element={<DefaultChatSection />} />
-                </Routes>
-            </div>
+            {friendsChat}
+            <Routes>
+                <Route path="" element={
+                    <div className="chatMessages">
+                        <DefaultChatSection />
+                    </div>} />
+            </Routes>
         </div>
     )
 }
@@ -79,22 +90,26 @@ const Friend = (props) => {
 
 const FriendChat = (props) => {
     let path = 'dialogs/' + props.id;
-    let lastID = props.friendMessages.slice(-1)[0].id;
-    let friendMessages = props.friendMessages.slice(0).reverse().map(friendMessage => <FriendMessage key={friendMessage.id} lastID={lastID} id={friendMessage.id} text={friendMessage.text} myMessage={friendMessage.myMessage} />);
-    friendMessages.push(<InputMyMessageBlock onSendMessageClick={props.onSendMessageClick} onNewMessageChange={props.onNewMessageChange} />);
+    let friendMessages = props.friendMessages.map(friendMessage => <FriendMessage text={friendMessage.text} myMessage={friendMessage.myMessage} key={friendMessage.id} />);
 
     return (
         <Routes>
-            <Route path={path} element={friendMessages} />
+            <Route path={path} element={
+                <div className="chatMessages">
+                    <div className="messanges-block">{friendMessages}</div>
+                    <InputMyMessageBlock onSendMessageClick={props.onSendMessageClick} onNewMessageChange={props.onNewMessageChange} />
+                    <input onChange={props.TemporaryonNewMessageChange} className="temporary-user-messange-input" type="text" placeholder="simulate user messagne input" />
+                </div>
+            } />
         </Routes>
     )
 }
 
 const FriendMessage = (props) => {
     if (props.myMessage) {
-        return (<p className="my-message-text">{props.text}</p>)
+        return (<p className="my-message">{props.text}</p>)
     } else
-    return (<p className="message-text">{props.text}</p>)
+        return (<p className="message">{props.text}</p>)
 }
 
 const InputMyMessageBlock = (props) => {

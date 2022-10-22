@@ -87,7 +87,6 @@ window.addEventListener("load", () => {
         el.className = 'list';
     });
     activeList.parentNode.className = 'list active';
-
 })
 
 
