@@ -1,12 +1,11 @@
 import React from "react";
-import { sendMessageCreator, updateNewMessageBodyCreator, updateNewMessageTemprorayBodyCreator } from "../../Redux/chatReducer";
+import { sendMessageCreator, updateNewMessageBodyCreator, updateNewMessageTemprorayBodyCreator, setDialogsCreator } from "../../Redux/chatReducer";
 import Chat from "./Chat";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => {
     return {
-        chat: state.chat,
-        newMessageBody: state.chat.newMessageBody
+        chat: state.chat
     }
 }
 
@@ -20,6 +19,9 @@ let mapDispatchToProps = (dispatch) => {
         },
         updateNewMessageTemprorayBody: (temporaryBody) => {
             dispatch(updateNewMessageTemprorayBodyCreator(temporaryBody));
+        },
+        setDialogs: (dialogs) => {
+            dispatch(setDialogsCreator(dialogs))
         }
     }
 }
