@@ -1,13 +1,12 @@
 import React from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
-import sendImg from '../../assets/png/003-send-message.svg';
-import standartAvatar from '../../assets/standart-avatar.png';
-import userAvatar1 from '../../assets/001-user-avatar.jpg';
-import userAvatar2 from '../../assets/002-user-avatar.jpg';
-import userAvatar3 from '../../assets/003-user-avatar.jpg';
-import userAvatar4 from '../../assets/004-user-avatar.jpg';
-import userAvatar5 from '../../assets/005-user-avatar.jpg';
-import userAvatar6 from '../../assets/006-user-avatar.jpg';
+import standartAvatar from '../../../assets/standart-avatar.png';
+import userAvatar1 from '../../../assets/001-user-avatar.jpg';
+import userAvatar2 from '../../../assets/002-user-avatar.jpg';
+import userAvatar3 from '../../../assets/003-user-avatar.jpg';
+import userAvatar4 from '../../../assets/004-user-avatar.jpg';
+import userAvatar5 from '../../../assets/005-user-avatar.jpg';
+import userAvatar6 from '../../../assets/006-user-avatar.jpg';
 
 const Chat = (props) => {
     if (props.chat.dialogs.length === 0) {
@@ -127,7 +126,7 @@ const Chat = (props) => {
         const chatUsers = document.querySelector(".chatUsers");
         const textarea = document.querySelector("textarea");
         let currentDialogId = chatUsers.querySelector(".active").dataset.dialogId;
-        
+
         if (textarea.value == '') {
             props.sendMessage(currentDialogId);
             document.querySelector(".temporary-user-messange-input").value = '';
@@ -238,8 +237,8 @@ const InputMyMessageBlock = (props) => {
                 onChange={props.onNewMessageChange}
                 placeholder='Send message'>
             </textarea>
-            <button onClick={props.onSendMessageClick}>
-                <img src={sendImg} alt="send-img" />
+            <button className="icon" onClick={props.onSendMessageClick}>
+                <i className="send-message"></i>
             </button>
         </div>
     )

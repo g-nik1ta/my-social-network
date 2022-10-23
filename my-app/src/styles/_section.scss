@@ -23,7 +23,8 @@ section {
             display: flex;
             flex-direction: column;
             flex: 0 0 270px;
-            max-width: 270px;
+            max-width: 35%;
+            min-width: 215px;
 
             .user-messages-search {
                 margin: 8px 0;
@@ -33,7 +34,7 @@ section {
                     width: 20px;
                     height: 20px;
                     position: absolute;
-                    background: url("../assets/png/001-search.svg");
+                    background: url("../assets/png/chat/001-search.svg");
                     background-size: 75%;
                     background-repeat: no-repeat;
                     background-position: center center;
@@ -96,7 +97,8 @@ section {
                         margin-bottom: 0;
                     }
 
-                    &:nth-of-type(4n+1), &:nth-of-type(5n+1) {
+                    &:nth-of-type(4n+1),
+                    &:nth-of-type(5n+1) {
                         .userAvatar {
                             i {
                                 display: block;
@@ -179,6 +181,7 @@ section {
         .chatMessages {
             margin-left: 20px;
             flex: 1 auto;
+            min-width: 300px;
             background-color: #fff;
             position: relative;
             height: inherit;
@@ -264,11 +267,21 @@ section {
                     border-radius: 50%;
                     padding: 3px 2px 0 0;
                     transition: all .1s ease-in-out;
+                    cursor: pointer;
 
                     &:hover {
                         background-color: #0c6ede;
-                        cursor: pointer;
                         transform: scale(1.035);
+                    }
+
+                    .send-message {
+                        display: block;
+                        background-image: url('../assets/png/chat/003-send-message.svg');
+                        background-size: 60%;
+                        background-repeat: no-repeat;
+                        background-position: center 45%;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
             }
@@ -283,7 +296,7 @@ section {
                 .message-item {
                     width: 36px;
                     height: 36px;
-                    background-image: url("../assets/png/002-message-block.svg");
+                    background-image: url("../assets/png/chat/002-message-block.svg");
                     background-size: 65%;
                     background-repeat: no-repeat;
                     background-position: center;

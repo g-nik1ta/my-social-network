@@ -9,7 +9,9 @@ const Nav = () => {
                     <b></b>
                     <b></b>
                     <NavLink className="home" to='/home'>
-                        <span className="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <div className="icon">
+                            <i className="home"></i>
+                        </div>
                         <span className="title">home</span>
                     </NavLink>
                 </li>
@@ -17,23 +19,39 @@ const Nav = () => {
                     <b></b>
                     <b></b>
                     <NavLink className="profile" to='/profile'>
-                        <span className="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <div className="icon">
+                            <i className="profile"></i>
+                        </div>
                         <span className="title">profile</span>
                     </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
+                    <NavLink className="friends" to='/friends'>
+                        <div className="icon">
+                            <i className="friends"></i>
+                        </div>
+                        <span className="title">friends</span>
+                    </NavLink>
+                </li>
+                <li className="list">
+                    <b></b>
+                    <b></b>
                     <NavLink className="chat" to='/chat'>
-                        <span className="icon"><ion-icon name="chatbubbles-outline"></ion-icon></span>
-                        <span className="title">messages</span>
+                        <div className="icon">
+                            <i className="chat"></i>
+                        </div>
+                        <span className="title">chat</span>
                     </NavLink>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
                     <NavLink className="setting" to='/setting'>
-                        <span className="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                        <div className="icon">
+                            <i className="settings"></i>
+                        </div>
                         <span className="title">setting</span>
                     </NavLink>
                 </li>
@@ -41,15 +59,19 @@ const Nav = () => {
                     <b></b>
                     <b></b>
                     <a href="#">
-                        <span className="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                        <span className="title">Password</span>
+                        <div className="icon">
+                            <i className="lock"></i>
+                        </div>
+                        <span className="title">lock</span>
                     </a>
                 </li>
                 <li className="list">
                     <b></b>
                     <b></b>
                     <a href="#">
-                        <span className="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <div className="icon">
+                            <i className="sign-out"></i>
+                        </div>
                         <span className="title">sign out</span>
                     </a>
                 </li>

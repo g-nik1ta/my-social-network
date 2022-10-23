@@ -32,7 +32,6 @@ const chatReducer = (state = initialState, action) => {
                 messages: [...state.dialogs[action.currentDialogId].messages, { id: neededID, text: body, dispatchTime: dispatchTime, myMessage: true }],
                 newMessageBody: ''
             };
-            console.log(state.newMessageTemprorayBody);
             if (temporaryBody != '') {
                 newMessageState = {
                     ...state.dialogs[action.currentDialogId],

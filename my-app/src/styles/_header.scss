@@ -3,11 +3,11 @@ header {
     width: 100%;
     height: 10vh;
     background-color: #2a2f43;
-    color: #fff;
     display: flex;
+    justify-content: space-between;
 
     .logo {
-        flex: 0 300px;
+        width: 300px;
         height: 100%;
         background-color: #353949;
         display: flex;
@@ -23,80 +23,56 @@ header {
     }
 
     .header-info {
-        flex: 1 auto;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         padding-left: 20px;
 
-        .header-nav {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex: 1;
-            max-width: 350px;
-
-            span {
-                position: relative;
-                cursor: pointer;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    bottom: -2px;
-                    height: 2px;
-                    width: 0;
-                    background-color: #fff;
-                    transition: all .3s ease-in-out;
-                }
-
-                &:hover::after {
-                    width: 100%;
-                }
-            }
-        }
-
-        .menu-user {
-            padding: 0 40px;
+        .header-menu {
             display: flex;
             align-items: center;
 
-            .box {
+            .icon {
                 cursor: pointer;
-                width: 38px;
-                height: 38px;
-                position: relative;
+                width: 22px;
+                height: 22px;
                 border-radius: 50%;
-                margin-right: 10px;
+                margin: 0 15px;
                 transition: transform .05s ease-in-out;
 
                 &:hover {
                     transform: scale(1.075);
                 }
 
-                &::before {
-                    content: '';
-                    top: 2px;
-                    left: 2px;
-                    position: absolute;
-                    width: inherit;
-                    height: inherit;
-                    background: linear-gradient(0deg, rgba(62,67,116,1) 0%, rgba(136,24,187,1) 51%, rgba(0,199,226,1) 100%);
-                    border-radius: 50%;
-                    animation: animate 4s linear infinite;
+                &>i {
+                    display: block;
+                    background-size: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    width: 100%;
+                    height: 100%;
                 }
 
-                ion-icon {
-                    position: absolute;
-                    padding: 4px;
-                    font-size: 24px;
-                    top: 5px;
-                    left: 5px;
-                    border-radius: 50%;
-                    background-color: #2a2f43;
+                .dark-theme {
+                    background-image: url('../assets/png/header/001-dark-theme.svg');
+                }
+
+                .notifications {
+                    background-image: url('../assets/png/header/002-notifications.svg');
+                }
+
+                .search {
+                    background-image: url('../assets/png/header/003-search.svg');
+                }
+
+                .add-post {
+                    background-image: url('../assets/png/header/004-add-post.svg');
                 }
             }
+        }
+
+        .login {
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
 
             button {
                 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -106,7 +82,6 @@ header {
                 margin: 0 8px;
                 font-weight: 400;
                 width: 120px;
-                display: inline-block;
                 text-transform: uppercase;
                 transition: all .15s ease-in-out;
                 border-radius: 20px;

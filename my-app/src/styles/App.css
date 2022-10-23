@@ -26,11 +26,11 @@ header {
   width: 100%;
   height: 10vh;
   background-color: #2a2f43;
-  color: #fff;
   display: flex;
+  justify-content: space-between;
 }
 header .logo {
-  flex: 0 300px;
+  width: 300px;
   height: 100%;
   background-color: #353949;
   display: flex;
@@ -44,75 +44,50 @@ header .logo a {
   color: #3dc3ff;
 }
 header .header-info {
-  flex: 1 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-left: 20px;
 }
-header .header-info .header-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex: 1;
-  max-width: 350px;
-}
-header .header-info .header-nav span {
-  position: relative;
-  cursor: pointer;
-}
-header .header-info .header-nav span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  height: 2px;
-  width: 0;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-header .header-info .header-nav span:hover::after {
-  width: 100%;
-}
-header .header-info .menu-user {
-  padding: 0 40px;
+header .header-info .header-menu {
   display: flex;
   align-items: center;
 }
-header .header-info .menu-user .box {
+header .header-info .header-menu .icon {
   cursor: pointer;
-  width: 38px;
-  height: 38px;
-  position: relative;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin: 0 15px;
   transition: transform 0.05s ease-in-out;
 }
-header .header-info .menu-user .box:hover {
+header .header-info .header-menu .icon:hover {
   transform: scale(1.075);
 }
-header .header-info .menu-user .box::before {
-  content: "";
-  top: 2px;
-  left: 2px;
-  position: absolute;
-  width: inherit;
-  height: inherit;
-  background: linear-gradient(0deg, rgb(62, 67, 116) 0%, rgb(136, 24, 187) 51%, rgb(0, 199, 226) 100%);
-  border-radius: 50%;
-  -webkit-animation: animate 4s linear infinite;
-          animation: animate 4s linear infinite;
+header .header-info .header-menu .icon > i {
+  display: block;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
 }
-header .header-info .menu-user .box ion-icon {
-  position: absolute;
-  padding: 4px;
-  font-size: 24px;
-  top: 5px;
-  left: 5px;
-  border-radius: 50%;
-  background-color: #2a2f43;
+header .header-info .header-menu .icon .dark-theme {
+  background-image: url("../assets/png/header/001-dark-theme.svg");
 }
-header .header-info .menu-user button {
+header .header-info .header-menu .icon .notifications {
+  background-image: url("../assets/png/header/002-notifications.svg");
+}
+header .header-info .header-menu .icon .search {
+  background-image: url("../assets/png/header/003-search.svg");
+}
+header .header-info .header-menu .icon .add-post {
+  background-image: url("../assets/png/header/004-add-post.svg");
+}
+header .header-info .login {
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+}
+header .header-info .login button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   cursor: pointer;
   font-size: 14px;
@@ -120,39 +95,38 @@ header .header-info .menu-user button {
   margin: 0 8px;
   font-weight: 400;
   width: 120px;
-  display: inline-block;
   text-transform: uppercase;
   transition: all 0.15s ease-in-out;
   border-radius: 20px;
 }
-header .header-info .menu-user button:first-of-type {
+header .header-info .login button:first-of-type {
   background-color: #03a9f4;
   border: 1px solid #03a9f4;
 }
-header .header-info .menu-user button:first-of-type::before {
+header .header-info .login button:first-of-type::before {
   content: "\f234";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: 14px;
   margin-right: 8px;
 }
-header .header-info .menu-user button:first-of-type:hover {
+header .header-info .login button:first-of-type:hover {
   background: transparent;
   color: #03a9f4;
 }
-header .header-info .menu-user button:last-of-type {
+header .header-info .login button:last-of-type {
   background: none;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
-header .header-info .menu-user button:last-of-type::before {
+header .header-info .login button:last-of-type::before {
   content: "\f2f6";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: 14px;
   margin-right: 8px;
 }
-header .header-info .menu-user button:last-of-type:hover {
+header .header-info .login button:last-of-type:hover {
   background: #03a9f4;
   color: #000;
   border: 1px solid #03a9f4;
@@ -163,11 +137,13 @@ nav {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  flex: 0 0 70px;
+  flex: 0 0 75px;
+  max-width: 25vw;
+  min-width: 75px;
   border-radius: 0 10px 10px 0;
   border-left: 5px solid #4d5bf9;
   background-color: #4d5bf9;
-  transition: flex 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -175,15 +151,20 @@ nav {
 }
 nav.active {
   flex: 0 0 300px;
+  min-width: 200px;
 }
 nav ul {
-  padding: 30px 0 10px;
+  padding: 40px 0 10px;
 }
 nav ul li {
   position: relative;
   list-style: none;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
+  margin-bottom: 8px;
+}
+nav ul li:nth-of-type(3) a .icon {
+  padding: 18px;
 }
 nav ul li:hover a .icon {
   transform: scale(1.05);
@@ -195,8 +176,11 @@ nav ul li.active b:nth-child(1),
 nav ul li.active b:nth-child(2) {
   display: block;
 }
-nav ul li.active a {
-  color: #333;
+nav ul li.active a .icon i {
+  background-color: #000;
+}
+nav ul li.active a span {
+  color: #000;
 }
 nav ul li b:nth-child(1),
 nav ul li b:nth-child(2) {
@@ -236,14 +220,47 @@ nav ul li a {
   white-space: nowrap;
 }
 nav ul li a .icon {
-  margin-left: 2px;
   min-width: 60px;
   height: 60px;
-  text-align: center;
-  line-height: 70px;
+  margin-left: 2px;
+  padding: 20px;
 }
-nav ul li a .icon ion-icon {
-  font-size: 1.5em;
+nav ul li a .icon > i {
+  display: block;
+  background-size: 37%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+nav ul li a .icon > i.home {
+  -webkit-mask-image: url("../assets/png/navigation/001-home.svg");
+          mask-image: url("../assets/png/navigation/001-home.svg");
+}
+nav ul li a .icon > i.profile {
+  -webkit-mask-image: url("../assets/png/navigation/002-profile.svg");
+          mask-image: url("../assets/png/navigation/002-profile.svg");
+}
+nav ul li a .icon > i.friends {
+  -webkit-mask-image: url("../assets/png/navigation/003-friends.svg");
+          mask-image: url("../assets/png/navigation/003-friends.svg");
+}
+nav ul li a .icon > i.chat {
+  -webkit-mask-image: url("../assets/png/navigation/004-chat.svg");
+          mask-image: url("../assets/png/navigation/004-chat.svg");
+}
+nav ul li a .icon > i.settings {
+  -webkit-mask-image: url("../assets/png/navigation/005-settings.svg");
+          mask-image: url("../assets/png/navigation/005-settings.svg");
+}
+nav ul li a .icon > i.lock {
+  -webkit-mask-image: url("../assets/png/navigation/006-lock.svg");
+          mask-image: url("../assets/png/navigation/006-lock.svg");
+}
+nav ul li a .icon > i.sign-out {
+  -webkit-mask-image: url("../assets/png/navigation/007-sign-out.svg");
+          mask-image: url("../assets/png/navigation/007-sign-out.svg");
 }
 nav ul li a .title {
   padding-left: 10px;
@@ -285,12 +302,6 @@ nav .toggle ion-icon[classname=close] {
   display: none !important;
 }
 
-main {
-  width: 100%;
-  display: flex;
-  height: 90vh;
-}
-
 section {
   flex: 1 auto;
   margin: 0 40px;
@@ -315,7 +326,8 @@ section .chat .chatUsers {
   display: flex;
   flex-direction: column;
   flex: 0 0 270px;
-  max-width: 270px;
+  max-width: 35%;
+  min-width: 215px;
 }
 section .chat .chatUsers .user-messages-search {
   margin: 8px 0;
@@ -325,7 +337,7 @@ section .chat .chatUsers .user-messages-search button {
   width: 20px;
   height: 20px;
   position: absolute;
-  background: url("../assets/png/001-search.svg");
+  background: url("../assets/png/chat/001-search.svg");
   background-size: 75%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -453,6 +465,7 @@ section .chat .chatUsers .friends-block a .add-info .dispatch-time {
 section .chat .chatMessages {
   margin-left: 20px;
   flex: 1 auto;
+  min-width: 300px;
   background-color: #fff;
   position: relative;
   height: inherit;
@@ -537,11 +550,20 @@ section .chat .chatMessages .inpute-my-message button {
   border-radius: 50%;
   padding: 3px 2px 0 0;
   transition: all 0.1s ease-in-out;
+  cursor: pointer;
 }
 section .chat .chatMessages .inpute-my-message button:hover {
   background-color: #0c6ede;
-  cursor: pointer;
   transform: scale(1.035);
+}
+section .chat .chatMessages .inpute-my-message button .send-message {
+  display: block;
+  background-image: url("../assets/png/chat/003-send-message.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center 45%;
+  width: 100%;
+  height: 100%;
 }
 section .chat .chatMessages .default-chat-section {
   width: 80%;
@@ -553,7 +575,7 @@ section .chat .chatMessages .default-chat-section {
 section .chat .chatMessages .default-chat-section .message-item {
   width: 36px;
   height: 36px;
-  background-image: url("../assets/png/002-message-block.svg");
+  background-image: url("../assets/png/chat/002-message-block.svg");
   background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;
@@ -567,11 +589,11 @@ section .chat .chatMessages .default-chat-section p {
   text-align: center;
 }
 
-aside {
-  background-color: #fff;
-  width: 250px;
-}
-
 .App ion-icon, .App img {
   pointer-events: none;
+}
+.App main {
+  width: 100%;
+  display: flex;
+  height: 90vh;
 }/*# sourceMappingURL=App.css.map */

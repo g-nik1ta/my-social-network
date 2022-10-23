@@ -1,7 +1,12 @@
 import React from "react";
-import { sendMessageCreator, updateNewMessageBodyCreator, updateNewMessageTemprorayBodyCreator, setDialogsCreator } from "../../Redux/chatReducer";
-import Chat from "./Chat";
+import { 
+    sendMessageCreator, 
+    updateNewMessageBodyCreator, 
+    updateNewMessageTemprorayBodyCreator, 
+    setDialogsCreator } from "../../../Redux/chatReducer";
 import {connect} from "react-redux";
+import Chat from "./Chat";
+
 
 let mapStateToProps = (state) => {
     return {

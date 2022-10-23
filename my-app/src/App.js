@@ -1,13 +1,18 @@
 import React from 'react';
 import './styles/App.css';
 import Header from './Components/Header';
-import Main from './Components/Main';
+import Nav from './Components/Navigation'
+import Section from './Components/Section';
+
 
 function App() {
 	return (
 		<div className="App">
 			<Header />
-			<Main />
+			<main>
+				<Nav />
+				<Section />
+			</main>
 		</div>
 	);
 }
