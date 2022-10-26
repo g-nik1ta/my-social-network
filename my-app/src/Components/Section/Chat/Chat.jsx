@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink, Routes, Route } from "react-router-dom";
 import standartAvatar from '../../../assets/standart-avatar.png';
 // import userAvatar1 from '../../../assets/001-user-avatar.jpg';
-import userAvatar2 from '../../../assets/002-user-avatar.jpg';
-import userAvatar3 from '../../../assets/003-user-avatar.jpg';
-import userAvatar4 from '../../../assets/004-user-avatar.jpg';
-import userAvatar5 from '../../../assets/005-user-avatar.jpg';
-import userAvatar6 from '../../../assets/006-user-avatar.jpg';
+// import userAvatar2 from '../../../assets/002-user-avatar.jpg';
+// import userAvatar3 from '../../../assets/003-user-avatar.jpg';
+// import userAvatar4 from '../../../assets/004-user-avatar.jpg';
+// import userAvatar5 from '../../../assets/005-user-avatar.jpg';
+// import userAvatar6 from '../../../assets/006-user-avatar.jpg';
 import axios from 'axios';
 
 const Chat = (props) => {
@@ -15,7 +15,6 @@ const Chat = (props) => {
         axios
             .get('http://localhost:3000/dialogs')
             .then(response => {
-                console.log(response.data);
                 props.setDialogs(response.data);
             })
     }

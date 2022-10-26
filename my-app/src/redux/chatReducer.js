@@ -1,3 +1,4 @@
+import axios from 'axios';
 const SEND_MESSAGE = 'SEND_MESSAGE';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-POST-TEXT';
 const UPDATE_NEW_MESSAGE_TEMPRORAY_BODY = 'UPDATE-NEW-TEMPORARY-POST-TEXT';
@@ -6,8 +7,7 @@ const SET_DIALOGS = 'SET_DIALOGS';
 let initialState = {
     dialogs: [],
     newMessageBody: "",
-    newMessageTemprorayBody: "",
-    currentDialog: 0
+    newMessageTemprorayBody: ""
 }
 
 const chatReducer = (state = initialState, action) => {
@@ -23,22 +23,33 @@ const chatReducer = (state = initialState, action) => {
                 newMessageBody: action.body
             }
         case SEND_MESSAGE:
+            let currentDialog = 0;
+            for (let i = 0; i < state.dialogs.length; i++, currentDialog++) {
+                if (state.dialogs[i].id == action.currentDialogId) {
+                    break;
+                }
+            }
             let body = state.newMessageBody;
             let temporaryBody = state.newMessageTemprorayBody;
-            let neededID = state.dialogs[action.currentDialogId].messages.length;
+            let neededID = state.dialogs[currentDialog].messages.length;
             let dispatchTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             let newMessageState = {
-                ...state.dialogs[action.currentDialogId],
-                messages: [...state.dialogs[action.currentDialogId].messages, { id: neededID, text: body, dispatchTime: dispatchTime, myMessage: true }],
+                ...state.dialogs[currentDialog],
+                messages: [...state.dialogs[currentDialog].messages, { id: neededID, text: body, dispatchTime: dispatchTime, myMessage: true }],
                 newMessageBody: ''
             };
             if (temporaryBody != '') {
                 newMessageState = {
-                    ...state.dialogs[action.currentDialogId],
-                    messages: [...state.dialogs[action.currentDialogId].messages, { id: neededID, text: temporaryBody, dispatchTime: dispatchTime }],
+                    ...state.dialogs[currentDialog],
+                    messages: [...state.dialogs[currentDialog].messages, { id: neededID, text: temporaryBody, dispatchTime: dispatchTime }],
                 };
             }
             state.newMessageTemprorayBody = '';
+            axios
+                .patch('http://localhost:3000/dialogs/' + (currentDialog + 1), {messages: newMessageState.messages})
+                .then(response => {
+                    console.log(response);
+                })
 
             return {
                 ...state,
@@ -49,7 +60,7 @@ const chatReducer = (state = initialState, action) => {
                             messages: newMessageState.messages
                         }
                         : dialog
-                ),
+                )
             }
         case SET_DIALOGS:
             return {
@@ -80,7 +91,7 @@ export const setDialogsCreator = (dialogs) => {
     return {
         type: SET_DIALOGS,
         dialogs
-    } 
+    }
 }
 
 export default chatReducer;
